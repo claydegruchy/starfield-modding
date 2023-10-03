@@ -221,7 +221,7 @@ Group ShipProperties collapsedonbase
   { DEFAULT=False. If True, if a Crew Critical Hit occurs, this ship will decompress and kill its crew. If False, nothing will happen. }
   Hazard Property ShipHazard Auto
   { DEFAULT=None. If set, this hazard will be active throughout the ship. SetShipHazard and ClearShipHazard can be used to change or remove it. }
-  Hazard[] Property PotentialHazards Auto Const
+  Hazard[] Property PotentialHazards Auto
   { Default=None. If set, if ShipHazard is None, a PotentialHazard will be selected at random to become the ShipHazard. }
   Float Property PotentialHazardChance = 1.0 Auto Const
   { Default=1.0. The chance that one of PotentialHazard's Hazards will be used. The default 1.0 means that if ShipHazard is None and PotentialHazards is filled, one will always be used. }
@@ -413,6 +413,12 @@ Group AutofillProperties collapsedonbase
   Keyword Property DynamicallyLinkedDoorTeleportMarkerKeyword Auto Const mandatory
   Keyword Property LootSafeKeyword Auto Const mandatory
   Keyword Property SpaceshipPreventRampOpenOnLanding Auto Const
+  ; added keywords
+  Keyword Property BE_Hazard_Keyword04_CorrosiveGas Auto Const mandatory
+  Keyword Property BE_Hazard_Keyword16_ElectricalField Auto Const mandatory
+  Keyword Property BE_Hazard_Keyword21_RadiationNuclearMaterial Auto Const mandatory
+  Keyword Property BE_Hazard_Keyword23_ToxicGasLeak Auto Const mandatory
+  ; end
   Faction Property REPlayerFriend Auto Const mandatory
   FormList Property BEAutomaticOwnershipFactionList Auto Const mandatory
   FormList Property BECivilianShipFactionList Auto Const mandatory
@@ -558,8 +564,36 @@ Event OnQuestStarted()
     Int I = 0 ; #DEBUG_LINE_NO:677
     Bool hazardChosen = False ; #DEBUG_LINE_NO:678
 
-
     ; ===== WORK IN PROGRESS ===== 
+
+
+    If ShouldCrewStartInCombat  
+      PotentialHazards = new Hazard[0]
+
+      ; acceptable space hazards from the array
+      ; BE_Hazard_Keyword04_CorrosiveGas
+      PotentialHazards.add(hazardType[3],1) 
+      ; BE_Hazard_Keyword16_ElectricalField
+      PotentialHazards.add(hazardType[15],1) 
+      ; BE_Hazard_Keyword21_RadiationNuclearMaterial
+      PotentialHazards.add(hazardType[20],1) 
+      ; BE_Hazard_Keyword23_ToxicGasLeak
+      PotentialHazards.add(hazardType[22],1) 
+    EndIf
+
+    ; redfine the hazard list to only include the ones we want
+
+
+
+    ; Debug.Notification("PotentialHazards.Length: " + PotentialHazards.Length)
+    ; Int J = 0 ;
+
+    ; While J < PotentialHazards.Length ; 
+    ;   Debug.Trace(J+" - PotentialHazards: " + PotentialHazards[J],0)
+    ;   J += 1 ;
+    ; EndWhile
+    
+
 
     ; debug notify for each in the list of BEHazardKeywordList
     ; Debug.Notification("Hazard keywords: " + hazardKeywords.Length + ". Hazard types: " + hazardType.Length)
@@ -577,7 +611,7 @@ Event OnQuestStarted()
     ; ShipHazard = hazardType[1]
     ; hazardChosen = True
 
-    enemyShipRef.AddKeyword(hazardKeywords[0]) ; #DEBUG_LINE_NO:678
+    ; enemyShipRef.AddKeyword(hazardKeywords[0]) ; #DEBUG_LINE_NO:678
 
     While I < hazardKeywords.Length && hazardChosen == False ; #DEBUG_LINE_NO:679
       If enemyShipRef.HasKeyword(hazardKeywords[I]) ; #DEBUG_LINE_NO:680
@@ -587,13 +621,18 @@ Event OnQuestStarted()
       EndIf ; #DEBUG_LINE_NO:
       I += 1 ; #DEBUG_LINE_NO:684
     EndWhile ; #DEBUG_LINE_NO:
+
     If ShipHazard == None && PotentialHazards != None && PotentialHazards.Length > 0 && Utility.RandomFloat(0.0, 1.0) < PotentialHazardChance ; #DEBUG_LINE_NO:686
-      ShipHazard = PotentialHazards[Utility.RandomInt(0, PotentialHazards.Length - 1)] ; #DEBUG_LINE_NO:687
+      Int R = Utility.RandomInt(0, PotentialHazards.Length - 1)
+      Debug.Notification("ALERT. HAZARD: " + PotentialHazards[R])
+      ShipHazard = PotentialHazards[R] ; #DEBUG_LINE_NO:687
+      ShouldHaveOxygenAtmosphere = False ; #DEBUG_LINE_NO:688
     EndIf ; #DEBUG_LINE_NO:
     If ShipHazard != None ; #DEBUG_LINE_NO:689
       Self.SetShipHazard(ShipHazard) ; #DEBUG_LINE_NO:690
     EndIf ; #DEBUG_LINE_NO:
     If !ShouldHaveOxygenAtmosphere ; #DEBUG_LINE_NO:694
+      Debug.Notification("airless enviroment")
       enemyShipInteriorLoc.AddKeyword(ENV_Loc_NotSealedEnvironment) ; #DEBUG_LINE_NO:695
     EndIf ; #DEBUG_LINE_NO:
     If ShipGravity >= 0.0 && ShipHazard == None ; #DEBUG_LINE_NO:699
@@ -825,6 +864,7 @@ Event Actor.OnLocationChange(Actor akSource, Location akOldLoc, Location akNewLo
                 I += 1 ; #DEBUG_LINE_NO:985
               EndWhile ; #DEBUG_LINE_NO:
               If BEObjective_AllCrew.GetCount() == 0 ; #DEBUG_LINE_NO:987
+                
                  ; #DEBUG_LINE_NO:
               EndIf ; #DEBUG_LINE_NO:
             EndIf ; #DEBUG_LINE_NO:
