@@ -223,7 +223,7 @@ Group ShipProperties collapsedonbase
   { DEFAULT=None. If set, this hazard will be active throughout the ship. SetShipHazard and ClearShipHazard can be used to change or remove it. }
   Hazard[] Property PotentialHazards Auto
   { Default=None. If set, if ShipHazard is None, a PotentialHazard will be selected at random to become the ShipHazard. }
-  Float Property PotentialHazardChance = 1.0 Auto Const
+  Float Property PotentialHazardChance = 0.25 Auto Const ; MODIFIED BY MOD
   { Default=1.0. The chance that one of PotentialHazard's Hazards will be used. The default 1.0 means that if ShipHazard is None and PotentialHazards is filled, one will always be used. }
   Bool Property ShouldHaveOxygenAtmosphere = True Auto
   { DEFAULT=True. If True, this ship will have a normal atmosphere. If False, the ship will have no oxygen if it is in space or on a planet with no oxygen. }
@@ -564,58 +564,39 @@ Event OnQuestStarted()
     Int I = 0 ; #DEBUG_LINE_NO:677
     Bool hazardChosen = False ; #DEBUG_LINE_NO:678
 
-    ; ===== WORK IN PROGRESS ===== 
+    ; ===== MOD STARTS HERE ===== 
 
-
+    ; this is a hackjob way to make sure we only do this on hostile ships, which i think is implicit but better safe than soryy 
     If ShouldCrewStartInCombat  
       PotentialHazards = new Hazard[0]
-
+      ; redfine the hazard list to only include the ones we want
       ; acceptable space hazards from the array
       ; BE_Hazard_Keyword04_CorrosiveGas
-      PotentialHazards.add(hazardType[3],1) 
+      PotentialHazards.add(hazardType[4],1) 
       ; BE_Hazard_Keyword16_ElectricalField
-      PotentialHazards.add(hazardType[15],1) 
+      PotentialHazards.add(hazardType[16],1) 
       ; BE_Hazard_Keyword21_RadiationNuclearMaterial
-      PotentialHazards.add(hazardType[20],1) 
+      PotentialHazards.add(hazardType[21],1) 
       ; BE_Hazard_Keyword23_ToxicGasLeak
-      PotentialHazards.add(hazardType[22],1) 
+      PotentialHazards.add(hazardType[23],1) 
     EndIf
 
-    ; redfine the hazard list to only include the ones we want
-
-
-
-    ; Debug.Notification("PotentialHazards.Length: " + PotentialHazards.Length)
-    ; Int J = 0 ;
-
+    
+    ; debugging stuff
     ; While J < PotentialHazards.Length ; 
     ;   Debug.Trace(J+" - PotentialHazards: " + PotentialHazards[J],0)
     ;   J += 1 ;
     ; EndWhile
     
-
-
-    ; debug notify for each in the list of BEHazardKeywordList
-    ; Debug.Notification("Hazard keywords: " + hazardKeywords.Length + ". Hazard types: " + hazardType.Length)
-
-    ; Int J = 0 ; 
-    ; While J < hazardKeywords.Length ; 
-    ;   Debug.Trace(J+" - setting hazard to: " + hazardType[J] + "keyword:" + hazardKeywords[J],0)
-    ;   J += 1 ; 
-    ; EndWhile
-    ; Debug.Notification("setting hazard to: " + hazardType[0] + "keyword:" + hazardKeywords[0])
-    ; 1=gas
-    ; 2=spores
-    ; 3=
-
+    ; used for selecting a specific hazard for testing
     ; ShipHazard = hazardType[1]
     ; hazardChosen = True
 
+    ; a way to add keywords instead of a direct hazard, use this some other day to make the hazard change based on damage to the enemy ship
     ; enemyShipRef.AddKeyword(hazardKeywords[0]) ; #DEBUG_LINE_NO:678
 
     While I < hazardKeywords.Length && hazardChosen == False ; #DEBUG_LINE_NO:679
       If enemyShipRef.HasKeyword(hazardKeywords[I]) ; #DEBUG_LINE_NO:680
-        Debug.Notification("Hazard pick off keyword selection: " + hazardType[I] + "keyword:" + hazardKeywords[I])
         ShipHazard = hazardType[I] ; #DEBUG_LINE_NO:681
         hazardChosen = True ; #DEBUG_LINE_NO:682
       EndIf ; #DEBUG_LINE_NO:
