@@ -570,7 +570,7 @@ Event OnQuestStarted()
     If ShouldCrewStartInCombat  
       PotentialHazards = new Hazard[0]
       ; redfine the hazard list to only include the ones we want
-      ; acceptable space hazards from the array
+      ; here we add acceptable space hazards from the array
       ; BE_Hazard_Keyword04_CorrosiveGas
       PotentialHazards.add(hazardType[4],1) 
       ; BE_Hazard_Keyword16_ElectricalField
@@ -579,6 +579,7 @@ Event OnQuestStarted()
       PotentialHazards.add(hazardType[21],1) 
       ; BE_Hazard_Keyword23_ToxicGasLeak
       PotentialHazards.add(hazardType[23],1) 
+      ; this is a real hackjob way to do it but im a nub at papyrus
     EndIf
 
     
@@ -609,6 +610,8 @@ Event OnQuestStarted()
       ShipHazard = PotentialHazards[R] ; #DEBUG_LINE_NO:687
       ShouldHaveOxygenAtmosphere = False ; #DEBUG_LINE_NO:688
     EndIf ; #DEBUG_LINE_NO:
+    ; ===== MOD ENDS HERE =====
+
     If ShipHazard != None ; #DEBUG_LINE_NO:689
       Self.SetShipHazard(ShipHazard) ; #DEBUG_LINE_NO:690
     EndIf ; #DEBUG_LINE_NO:
