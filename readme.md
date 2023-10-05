@@ -1,11 +1,18 @@
-# mods for starfield with papyrus
+# starfield modding stuff
+Note that the below are raw notes from me during the modding process. 
 
-how to get these working
+If you're just here for the mod, then use `bsscript.psc`
+
+Versions of Caprica may be outdated, this is litterally my working folder for modding, but may help new modders understand what can be changed or common gotchas.
+
+# how to get these working
 https://www.nexusmods.com/starfield/mods/3921
 extract at bottom in case that 404s
 
-# example
+# bsscript
 you can take a script that controls part of the game and modify it, leaving it in the data/scripts folder and the game will load it
+
+in this case we use the boarding script that defines the boarding a ship "mission" that starts when you dock an enemy ship.
 
 # shit you should know
 - scripts must be compiled from their native `.psc` format into `.pex` to be loaded by the engine
