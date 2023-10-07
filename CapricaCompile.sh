@@ -61,7 +61,7 @@ echo "OUTPUT:     \"$OUTPUT\""
 echo "SCRIPTPATH: \"$SCRIPTPATH\""
 echo "SCRIPTNAME: \"$SCRIPTNAME\""
 echo "SCRIPTFILE: \"$SCRIPTFILE\""
-echo
+echo "CURRENT PATH: $(pwd)"
 
 # Execute Caprica.exe from cap_directory
 echo "Executing Caprica.exe from cap_directory: \"$cap_directory\""
