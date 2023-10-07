@@ -55,9 +55,11 @@ fi
 
 # Compile
 SCRIPTFILE="$cap_directory/$SCRIPTPATH/$SCRIPTNAME"
+OUTFILE="$cap_directory/$SCRIPTPATH/"
 
 echo "IMPORT:     \"$IMPORT\""
 echo "OUTPUT:     \"$OUTPUT\""
+echo "OUTFILE: \"$OUTFILE\""
 echo "SCRIPTPATH: \"$SCRIPTPATH\""
 echo "SCRIPTNAME: \"$SCRIPTNAME\""
 echo "SCRIPTFILE: \"$SCRIPTFILE\""
@@ -73,7 +75,7 @@ fi
 
 # Execute Caprica.exe from cap_directory
 echo "Executing Caprica.exe from cap_directory: \"$cap_directory\""
-full_path="$cap_directory/Caprica.exe --game starfield --import \"$IMPORT\" --output \"$OUTPUT\" \"$SCRIPTFILE\""
+full_path="$cap_directory/Caprica.exe --game starfield --import \"$IMPORT\" --output \"$OUTFILE\" \"$SCRIPTFILE\""
 # Caprica.exe --game starfield --import "$IMPORT" --output "$OUTPUT" "$SCRIPTFILE"
 bash "$full_path"
 
