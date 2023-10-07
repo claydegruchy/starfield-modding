@@ -2,6 +2,8 @@
 
 set -m
 
+f=$(pwd)
+
 # Loop through folders with ".mod" in their name
 for folder in *mod*; do
     if [ -d "$folder" ]; then
@@ -14,7 +16,6 @@ for folder in *mod*; do
         for subfolder in "$folder/permutations"/*; do
             if [ -d "$subfolder" ]; then
                 echo "Compiling bescript.psc in: $subfolder"
-                f=$(pwd)
                 
                 ./CapricaCompile.sh "$pwd/$subfolder" bescript.psc "$pwd/$subfolder"
                 # Run CapricaCompile.cmd with output folder set to subfolder
@@ -24,6 +25,11 @@ for folder in *mod*; do
                 # CMD "/C CapricaCompile.cmd  $SF/bescript.psc" 
                 # CMD "/C CapricaCompile.cmd" 
                 # "./CapricaCompile.cmd" "$(cygpath -w "$subfolder/bescript.psc")" "$(cygpath -w ")"
+
+
+Executing Caprica.exe from cap_directory: "/c/Program Files (x86)/Steam/steamapps/common/Starfield/Data/Scripts/Source/User"
+bash: /c/Program Files (x86)/Steam/steamapps/common/Starfield/Data/Scripts/Source/User/Caprica.exe --game starfield --import "C:\Program Files (x86)\Steam\steamapps\common\Starfield\Data\Scripts\Source\Base" --output "/Hazardous ship boarding.mod/permutations/standard" "/Hazardous ship boarding.mod/permutations/standard/bescript.psc": No such file or directory
+
 
                 # echo "./CapricaCompile.cmd" "$subfolder/bescript.psc" "
             fi
