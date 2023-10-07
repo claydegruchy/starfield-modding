@@ -85,8 +85,24 @@ else
   exit 1
 fi
 
+
+# create folder at location $OUTPUT/Data/scripts
+echo "Creating folder at location \"$OUTPUT/Data/scripts\""
+
+# check if folder exists
+if [ -d "$OUTPUT/Data/scripts" ]; then
+  echo "Folder \"$OUTPUT/Data/scripts\" exists."
+else
+  echo "Folder \"$OUTPUT/Data/scripts\" does not exist."
+  mkdir -p "$OUTPUT/Data/scripts"
+fi
+
+OUTPUT_DATA_FOLDER="$OUTPUT/Data/scripts"
+
+
+
 # run
-./Caprica.exe --game starfield --import "$IMPORT" --output "$OUTPUT" "$SCRIPTNAME"
+./Caprica.exe --game starfield --import "$IMPORT" --output "$OUTPUT_DATA_FOLDER" "$SCRIPTNAME"
 
 # delete bescript.psc from the current directory
 echo "Deleting \"$SCRIPTNAME\" from the current directory."
