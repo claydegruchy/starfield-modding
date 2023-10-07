@@ -86,7 +86,7 @@ else
 fi
 
 # run
-Caprica.exe --game starfield --import "$IMPORT" --output "$OUTPUT" "$SCRIPTNAME"
+./Caprica.exe --game starfield --import "$IMPORT" --output "$OUTPUT" "$SCRIPTNAME"
 
 # delete bescript.psc from the current directory
 echo "Deleting \"$SCRIPTNAME\" from the current directory."
