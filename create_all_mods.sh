@@ -17,7 +17,7 @@ for folder in *mod*; do
             if [ -d "$subfolder" ]; then
                 echo "Compiling bescript.psc in: $subfolder"
                 
-                ./CapricaCompile.sh "$pwd/$subfolder" bescript.psc "$pwd/$subfolder"
+                ./CapricaCompile.sh "$subfolder" bescript.psc "$subfolder"
                 # Run CapricaCompile.cmd with output folder set to subfolder
                 # echo "/C CapricaCompile.cmd  '$subfolder/bescript.psc' '$subfolder'" 
                 # CMD "/C CapricaCompile.cmd $SCRIPT $SF" 
