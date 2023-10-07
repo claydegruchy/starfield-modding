@@ -63,6 +63,14 @@ echo "SCRIPTNAME: \"$SCRIPTNAME\""
 echo "SCRIPTFILE: \"$SCRIPTFILE\""
 echo "CURRENT PATH: $(pwd)"
 
+# check if SCRIPTFILE exists
+if [ -f "$SCRIPTFILE" ]; then
+  echo "File \"$SCRIPTFILE\" exists."
+else
+  echo "File \"$SCRIPTFILE\" does not exist."
+  exit 1
+fi
+
 # Execute Caprica.exe from cap_directory
 echo "Executing Caprica.exe from cap_directory: \"$cap_directory\""
 full_path="$cap_directory/Caprica.exe --game starfield --import \"$IMPORT\" --output \"$OUTPUT\" \"$SCRIPTFILE\""
