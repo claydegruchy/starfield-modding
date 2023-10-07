@@ -6,8 +6,6 @@ OUTPUT="C:\Program Files (x86)\Steam\steamapps\common\Starfield\Data\Scripts"
 SCRIPTPATH="C:\Program Files (x86)\Steam\steamapps\common\Starfield\Data\Scripts\Source\User"
 SCRIPTNAME="SKK_ConsoleUtilityScript.psc"
 
-# Change the current working directory to SCRIPTPATH
-cd "$SCRIPTPATH"
 
 # Check if the first command line parameter is provided
 if [ -z "$1" ]; then
@@ -15,8 +13,12 @@ if [ -z "$1" ]; then
 else
   echo "A param has been passed in 1: '$1'"
   SCRIPTPATH="$1"
-  echo "SCRIPTPATH: \"$SCRIPTPATH\""
+  echo "# Updating SCRIPTPATH: \"$SCRIPTPATH\""
 fi
+
+# Change the current working directory to SCRIPTPATH
+cd "$SCRIPTPATH"
+
 
 
 # Check if the second command line parameter is provided
@@ -25,7 +27,7 @@ if [ -z "$2" ]; then
 else
   echo "A param has been passed in 1: '$2'"
   SCRIPTNAME="$2"
-  echo "SCRIPTNAME: \"$SCRIPTNAME\""
+  echo "# Updating SCRIPTNAME: \"$SCRIPTNAME\""
 fi
 
 # Check if the third command line parameter is provided
@@ -34,7 +36,7 @@ if [ -z "$3" ]; then
 else
   echo "A param has been passed in 2: '$3'"
   OUTPUT="$3"
-  echo "OUTPUT: \"$OUTPUT\""
+  echo "# Updating OUTPUT: \"$OUTPUT\""
 fi
 
 # Print information
