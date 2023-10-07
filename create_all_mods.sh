@@ -23,7 +23,7 @@ for folder in *mod*; do
                 
                 # Run CapricaCompile.cmd with output folder set to subfolder
                 # echo "/C CapricaCompile.cmd  '$subfolder/bescript.psc' '$subfolder'" 
-                CMD "/C CapricaCompile.cmd  $subfolder/bescript.psc $subfolder" 
+                # CMD "/C CapricaCompile.cmd  $subfolder/bescript.psc $subfolder" 
                 # CMD "/C ./CapricaCompile.cmd  ./$SF/bescript.psc" 
                 # CMD "/C CapricaCompile.cmd  $SF/bescript.psc" 
                 # CMD "/C CapricaCompile.cmd" 
