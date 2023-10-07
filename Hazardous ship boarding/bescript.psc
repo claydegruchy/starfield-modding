@@ -619,7 +619,7 @@ Event OnQuestStarted()
       Debug.Notification("airless enviroment")
       enemyShipInteriorLoc.AddKeyword(ENV_Loc_NotSealedEnvironment) ; #DEBUG_LINE_NO:695
     EndIf ; #DEBUG_LINE_NO:
-    If ShipGravity >= 0.0 && ShipHazard == None ; #DEBUG_LINE_NO:699
+    If ShipGravity >= 0.0 ; #DEBUG_LINE_NO:699
       If ShipGravityModPercentChance < 0.0 || ShipGravityModPercentChance >= 1.0 || Utility.RandomFloat(0.0, 1.0) < ShipGravityModPercentChance ; #DEBUG_LINE_NO:700
         Self.SetShipGravity(ShipGravity) ; #DEBUG_LINE_NO:702
       ElseIf BE_ForceNextGravityOverride != None && BE_ForceNextGravityOverride.GetValue() >= 0.0 ; #DEBUG_LINE_NO:703
