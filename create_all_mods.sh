@@ -16,6 +16,7 @@ for folder in *mod*; do
                 echo "Compiling bescript.psc in: $subfolder"
                 SF=$(printf '%q' "$subfolder")
                 SF=\"$subfolder\"
+                SCRIPT=\"$subfolder/bescript.psc\"
 
                 echo subfolder: "$subfolder"
                 echo SF: "$SF"
@@ -23,7 +24,7 @@ for folder in *mod*; do
                 
                 # Run CapricaCompile.cmd with output folder set to subfolder
                 # echo "/C CapricaCompile.cmd  '$subfolder/bescript.psc' '$subfolder'" 
-                # CMD "/C CapricaCompile.cmd  $subfolder/bescript.psc $subfolder" 
+                CMD "/C CapricaCompile.cmd $SCRIPT $SF" 
                 # CMD "/C ./CapricaCompile.cmd  ./$SF/bescript.psc" 
                 # CMD "/C CapricaCompile.cmd  $SF/bescript.psc" 
                 # CMD "/C CapricaCompile.cmd" 
