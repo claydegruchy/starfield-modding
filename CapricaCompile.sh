@@ -65,7 +65,7 @@ echo "CURRENT PATH: $(pwd)"
 
 # Execute Caprica.exe from cap_directory
 echo "Executing Caprica.exe from cap_directory: \"$cap_directory\""
-full_path="$cap_directory/Caprica.exe --game starfield --import \"$IMPORT\" --output \"$OUTPUT\" \"$SCRIPTFILE\""
+full_path="$cap_directory/Caprica.exe --game starfield --import \"$IMPORT\" --output \"$OUTPUT\" \"$cap_directory/$SCRIPTFILE\""
 # Caprica.exe --game starfield --import "$IMPORT" --output "$OUTPUT" "$SCRIPTFILE"
 bash "$full_path"
 
