@@ -27,8 +27,6 @@ for folder in *mod*; do
                 # "./CapricaCompile.cmd" "$(cygpath -w "$subfolder/bescript.psc")" "$(cygpath -w ")"
 
 
-Executing Caprica.exe from cap_directory: "/c/Program Files (x86)/Steam/steamapps/common/Starfield/Data/Scripts/Source/User"
-bash: /c/Program Files (x86)/Steam/steamapps/common/Starfield/Data/Scripts/Source/User/Caprica.exe --game starfield --import "C:\Program Files (x86)\Steam\steamapps\common\Starfield\Data\Scripts\Source\Base" --output "/Hazardous ship boarding.mod/permutations/standard" "/Hazardous ship boarding.mod/permutations/standard/bescript.psc": No such file or directory
 
 
                 # echo "./CapricaCompile.cmd" "$subfolder/bescript.psc" "
