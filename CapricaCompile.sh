@@ -16,8 +16,8 @@ else
   echo "# Updating SCRIPTPATH: \"$SCRIPTPATH\""
 fi
 
-# Change the current working directory to SCRIPTPATH
-cd "$SCRIPTPATH"
+# # Change the current working directory to SCRIPTPATH
+# cd "$SCRIPTPATH"
 
 
 
