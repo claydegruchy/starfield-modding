@@ -19,7 +19,7 @@ fi
 cap_directory=$(pwd)
 
 # # Change the current working directory to SCRIPTPATH
-cd "$SCRIPTPATH"
+# cd "$SCRIPTPATH"
 
 
 
@@ -73,11 +73,32 @@ else
   exit 1
 fi
 
+# copy bescript.psc to the current directory
+echo "Copying \"$SCRIPTFILE\" to the current directory."
+cp "$SCRIPTFILE" .
+
+# check if bescript.psc exists
+if [ -f "$SCRIPTNAME" ]; then
+  echo "File \"$SCRIPTNAME\" exists."
+else
+  echo "File \"$SCRIPTNAME\" does not exist."
+  exit 1
+fi
+
+# run
+Caprica.exe --game starfield --import "$IMPORT" --output "$OUTPUT" "$SCRIPTNAME"
+
+# delete bescript.psc from the current directory
+echo "Deleting \"$SCRIPTNAME\" from the current directory."
+rm "$SCRIPTNAME"
+
+
+
 # Execute Caprica.exe from cap_directory
-echo "Executing Caprica.exe from cap_directory: \"$cap_directory\""
-full_path="$cap_directory/Caprica.exe --game starfield --import \"$IMPORT\" --output \"$OUTFILE\" \"$SCRIPTFILE\""
-# Caprica.exe --game starfield --import "$IMPORT" --output "$OUTPUT" "$SCRIPTFILE"
-bash "$full_path"
+# echo "Executing Caprica.exe from cap_directory: \"$cap_directory\""
+# full_path="$cap_directory/Caprica.exe --game starfield --import \"$IMPORT\" --output \"$OUTFILE\" \"$SCRIPTFILE\""
+# # Caprica.exe --game starfield --import "$IMPORT" --output "$OUTPUT" "$SCRIPTFILE"
+# bash "$full_path"
 
 
 
