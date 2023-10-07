@@ -17,12 +17,14 @@ cd "%SCRIPTPATH%"
 
 rem %1 is the first command line parameter passed which will override hardcoded SCRIPTNAME Notepad++ passes $(FILE_NAME)
 if [%1] == [] goto START
+echo "A param has been passed in 1: '%1'"
 set SCRIPTNAME=%1
 @REM print out the script name
 echo SCRIPTNAME: "%SCRIPTNAME%"
 
 @REM %2 is the second command line parameter passed which will override hardcoded OUTPUT
 if [%2] == [] goto START
+echo "A param has been passed in 2: '%2'"
 set OUTPUT=%2
 @REM print out the output path
 echo OUTPUT: "%OUTPUT%"
