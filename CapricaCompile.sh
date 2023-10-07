@@ -106,7 +106,7 @@ OUTPUT_DATA_FOLDER="$OUTPUT/Data/scripts"
 
 # create zip file containing the data folder
 echo "Creating zip file containing the data folder."
-powershell Compress-Archive "$OUTPUT/Data/" "$OUTPUT.zip"
+powershell Compress-Archive -Path "$OUTPUT/Data/" -DestinationPath "$OUTPUT.zip"
 
 # delete bescript.psc from the current directory
 echo "Deleting \"$SCRIPTNAME\" from the current directory."
