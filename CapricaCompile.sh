@@ -16,8 +16,10 @@ else
   echo "# Updating SCRIPTPATH: \"$SCRIPTPATH\""
 fi
 
+cap_directory=$(pwd)
+
 # # Change the current working directory to SCRIPTPATH
-# cd "$SCRIPTPATH"
+cd "$SCRIPTPATH"
 
 
 
@@ -61,8 +63,14 @@ echo "SCRIPTNAME: \"$SCRIPTNAME\""
 echo "SCRIPTFILE: \"$SCRIPTFILE\""
 echo
 
-# Execute Caprica.exe
-./Caprica.exe --game starfield --import "$IMPORT" --output "$OUTPUT" "$SCRIPTFILE"
+# Execute Caprica.exe from cap_directory
+echo "Executing Caprica.exe from cap_directory: \"$cap_directory\""
+../../Caprica.exe --game starfield --import "$IMPORT" --output "$OUTPUT" "$SCRIPTFILE"
+
+
+
+
+
 
 # End
 echo
