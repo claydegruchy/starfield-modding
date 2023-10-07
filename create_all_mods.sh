@@ -2,7 +2,7 @@
 
 set -m
 
-f="$(pwd)"
+pwd="$(pwd)"
 
 # Loop through folders with ".mod" in their name
 for folder in *mod*; do
