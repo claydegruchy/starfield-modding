@@ -21,7 +21,8 @@ for folder in *mod*; do
                 
                 # Run CapricaCompile.cmd with output folder set to subfolder
                 echo "/C ./CapricaCompile.cmd  ./$SF/bescript.psc" 
-                powershell -File "/C ./CapricaCompile.cmd  ./$SF/bescript.psc" 
+                # CMD "/C ./CapricaCompile.cmd  ./$SF/bescript.psc" 
+                CMD "/C ./CapricaCompile.cmd" 
                 # "./CapricaCompile.cmd" "$(cygpath -w "$subfolder/bescript.psc")" "$(cygpath -w ")"
 
                 # echo "./CapricaCompile.cmd" "$subfolder/bescript.psc" "
