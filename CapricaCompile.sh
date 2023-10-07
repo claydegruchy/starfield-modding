@@ -104,6 +104,10 @@ OUTPUT_DATA_FOLDER="$OUTPUT/Data/scripts"
 # run
 ./Caprica.exe --game starfield --import "$IMPORT" --output "$OUTPUT_DATA_FOLDER" "$SCRIPTNAME"
 
+# create zip file containing the data folder
+echo "Creating zip file containing the data folder."
+zip -r "$OUTPUT.zip" "$OUTPUT/Data"
+
 # delete bescript.psc from the current directory
 echo "Deleting \"$SCRIPTNAME\" from the current directory."
 rm "$SCRIPTNAME"
