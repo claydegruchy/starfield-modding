@@ -14,10 +14,12 @@ for folder in *mod*; do
                 echo "Compiling bescript.psc in: $subfolder"
                 SF=$(printf '%q' "$subfolder")
 
-                echo "$SF"
+                echo subfolder: "$subfolder"
+                echo SF: "$SF"
                 
                 # Run CapricaCompile.cmd with output folder set to subfolder
-                CMD "/C ./CapricaCompile.cmd  $SF/bescript.psc" 
+                echo "/C ./CapricaCompile.cmd  $SF/bescript.psc" 
+                # CMD "/C ./CapricaCompile.cmd  $SF/bescript.psc" 
                 # "./CapricaCompile.cmd" "$(cygpath -w "$subfolder/bescript.psc")" "$(cygpath -w ")"
 
                 # echo "./CapricaCompile.cmd" "$subfolder/bescript.psc" "
