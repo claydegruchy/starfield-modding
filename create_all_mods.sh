@@ -1,6 +1,13 @@
 #!/bin/bash
 
+
+# ################ WARNING: HERE BE DRAGONS. DO NOT USE THIS UNDER ANY CIRCUMSTANCES. ################
+# ################################ IT REALLY FUCKING SUCKS ASS #######################################
+
 set -m
+
+
+
 
 pwd="$(pwd)"
 
