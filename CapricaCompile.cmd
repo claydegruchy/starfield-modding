@@ -16,6 +16,10 @@ rem %1 is the first command line parameter passed which will override hardcoded 
 if [%1] == [] goto START
 set SCRIPTNAME=%1
 
+@REM %2 is the second command line parameter passed which will override hardcoded OUTPUT
+if [%2] == [] goto START
+set OUTPUT=%2
+
 :START
 cls
 echo ****************************************************************
