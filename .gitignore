@@ -1,12 +1,12 @@
 # standard git ignore for papyrus and macos
 
-*/permutations/*
+*/permutations/*/*.psc
 
 
 
 # papyrus
 
-*.pex
+# *.pex
 *.pex.debug
 *.pex.debug.*
 *.pex.debug/*
