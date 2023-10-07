@@ -223,13 +223,13 @@ Group ShipProperties collapsedonbase
   { DEFAULT=None. If set, this hazard will be active throughout the ship. SetShipHazard and ClearShipHazard can be used to change or remove it. }
   Hazard[] Property PotentialHazards Auto
   { Default=None. If set, if ShipHazard is None, a PotentialHazard will be selected at random to become the ShipHazard. }
-  Float Property PotentialHazardChance = {{ShipProperties.PotentialHazardChance}} Auto Const ; MODIFIED BY MOD
+  Float Property PotentialHazardChance = 0.25 Auto Const ; MODIFIED BY MOD
   { Default=1.0. The chance that one of PotentialHazard's Hazards will be used. The default 1.0 means that if ShipHazard is None and PotentialHazards is filled, one will always be used. }
   Bool Property ShouldHaveOxygenAtmosphere = True Auto
   { DEFAULT=True. If True, this ship will have a normal atmosphere. If False, the ship will have no oxygen if it is in space or on a planet with no oxygen. }
   Float Property ShipGravity = -1.0 Auto
   { DEFAULT=-1. If >= 0, Overrides the ship's default gravity. SetShipGravity can be used to change it. }
-  Float Property ShipGravityModPercentChance = {{ShipProperties.ShipGravityModPercentChance}} Auto
+  Float Property ShipGravityModPercentChance = 0.5 Auto
   { DEFAULT=1. The chance that ShipGravity's Gravity Override will be used. The default 1.0 means that ShipGravity will always be used, 0.5 would apply it half the time, etc. }
   Bool Property ShouldOverrideGravityOnlyInSpace = True Auto Const
   { DEFAULT=True. If True, ShipGravity's override will be used for docking encounters, and ignored for landing encounters, which is usually what you want.
