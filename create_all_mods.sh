@@ -14,14 +14,9 @@ for folder in *mod*; do
         for subfolder in "$folder/permutations"/*; do
             if [ -d "$subfolder" ]; then
                 echo "Compiling bescript.psc in: $subfolder"
-                SF=$(printf '%q' "$subfolder")
-                SF=\"$subfolder\"
-                SCRIPT=\"$subfolder/bescript.psc\"
-
-                echo subfolder: "$subfolder"
-                echo SF: "$SF"
+                f=$(pwd)
                 
-                ./CapricaCompile.sh "$subfolder" bescript.psc "$subfolder"
+                ./CapricaCompile.sh "$pwd/$subfolder" bescript.psc "$pwd/$subfolder"
                 # Run CapricaCompile.cmd with output folder set to subfolder
                 # echo "/C CapricaCompile.cmd  '$subfolder/bescript.psc' '$subfolder'" 
                 # CMD "/C CapricaCompile.cmd $SCRIPT $SF" 
