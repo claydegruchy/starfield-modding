@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Print the 1st command line parameter passed to the script
-echo $1
-
 # Set variables
 IMPORT="C:\Program Files (x86)\Steam\steamapps\common\Starfield\Data\Scripts\Source\Base"
 OUTPUT="C:\Program Files (x86)\Steam\steamapps\common\Starfield\Data\Scripts"
@@ -17,21 +14,30 @@ if [ -z "$1" ]; then
   echo "No parameter provided."
 else
   echo "A param has been passed in 1: '$1'"
-  SCRIPTNAME="$1"
-  echo "SCRIPTNAME: \"$SCRIPTNAME\""
+  SCRIPTPATH="$1"
+  echo "SCRIPTPATH: \"$SCRIPTPATH\""
 fi
+
 
 # Check if the second command line parameter is provided
 if [ -z "$2" ]; then
   echo "No parameter provided."
 else
-  echo "A param has been passed in 2: '$2'"
-  OUTPUT="$2"
+  echo "A param has been passed in 1: '$2'"
+  SCRIPTNAME="$2"
+  echo "SCRIPTNAME: \"$SCRIPTNAME\""
+fi
+
+# Check if the third command line parameter is provided
+if [ -z "$3" ]; then
+  echo "No parameter provided."
+else
+  echo "A param has been passed in 2: '$3'"
+  OUTPUT="$3"
   echo "OUTPUT: \"$OUTPUT\""
 fi
 
 # Print information
-clear
 echo "****************************************************************"
 echo "Caprica Starfield DEBUG compile 002"
 echo
