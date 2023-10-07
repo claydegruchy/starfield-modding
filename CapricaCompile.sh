@@ -106,7 +106,7 @@ OUTPUT_DATA_FOLDER="$OUTPUT/Data/scripts"
 
 # create zip file containing the data folder
 echo "Creating zip file containing the data folder."
-tar -a -c -f -C "$OUTPUT.zip" "$OUTPUT/Data"
+tar -a -C -f  "$OUTPUT.zip" "$OUTPUT/Data"
 
 # delete bescript.psc from the current directory
 echo "Deleting \"$SCRIPTNAME\" from the current directory."
