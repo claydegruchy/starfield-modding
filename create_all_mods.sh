@@ -18,8 +18,8 @@ for folder in *mod*; do
                 echo SF: "$SF"
                 
                 # Run CapricaCompile.cmd with output folder set to subfolder
-                echo "/C ./CapricaCompile.cmd  $SF/bescript.psc" 
-                # CMD "/C ./CapricaCompile.cmd  $SF/bescript.psc" 
+                echo "/C ./CapricaCompile.cmd  ./$SF/bescript.psc" 
+                CMD "/C ./CapricaCompile.cmd  ./$SF/bescript.psc" 
                 # "./CapricaCompile.cmd" "$(cygpath -w "$subfolder/bescript.psc")" "$(cygpath -w ")"
 
                 # echo "./CapricaCompile.cmd" "$subfolder/bescript.psc" "
