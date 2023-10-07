@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -m
+
 # Loop through folders with ".mod" in their name
 for folder in *mod*; do
     if [ -d "$folder" ]; then
