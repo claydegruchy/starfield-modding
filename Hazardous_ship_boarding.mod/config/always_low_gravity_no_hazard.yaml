@@ -1,0 +1,5 @@
+ShipProperties:
+  ShipGravityModPercentChance: 1.0
+  PotentialHazardChance: 0.0
+BoardingProperties:
+  BoardingChance: 0.0

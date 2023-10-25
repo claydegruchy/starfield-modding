@@ -1,4 +1,3 @@
-#!/bin/bash
 
 # Set variables
 IMPORT="C:\Program Files (x86)\Steam\steamapps\common\Starfield\Data\Scripts\Source\Base"

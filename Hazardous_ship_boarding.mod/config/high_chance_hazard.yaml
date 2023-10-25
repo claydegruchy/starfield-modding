@@ -1,0 +1,4 @@
+ShipProperties:
+  PotentialHazardChance: 0.8
+BoardingProperties:
+  BoardingChance: 0.9

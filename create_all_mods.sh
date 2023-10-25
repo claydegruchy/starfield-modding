@@ -41,3 +41,8 @@ for folder in *mod*; do
         done
     fi
 done
+
+echo "copying"
+cp "Hazardous_ship_boarding.mod\permutations\standard\Data\scripts\bescript.pex" "..\..\bescript.pex"
+
+echo "done"

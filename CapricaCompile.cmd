@@ -1,16 +1,14 @@
 @REM @echo off
 
 @REM print the 1st command line parameter passed to the batch file
-echo %1
+echo "PARAM: %1"
 
-rem skk.50@outlook.com September 2023
-rem CapricaCompile.cmd
 
 set IMPORT=C:\Program Files (x86)\Steam\steamapps\common\Starfield\Data\Scripts\Source\Base
 set OUTPUT=C:\Program Files (x86)\Steam\steamapps\common\Starfield\Data\Scripts
 @REM set FLAGS=C:\Program Files (x86)\Steam\steamapps\common\Starfield\Data\Scripts\Source\User\Starfield_Papyrus_Flags.flg
 set SCRIPTPATH=C:\Program Files (x86)\Steam\steamapps\common\Starfield\Data\Scripts\Source\User
-set SCRIPTNAME=SKK_ConsoleUtilityScript.psc
+set SCRIPTNAME=bescript.psc
 
 rem Notepad++ needs current working directory to be where Caprica.exe is 
 cd "%SCRIPTPATH%"

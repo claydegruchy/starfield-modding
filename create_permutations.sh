@@ -82,3 +82,6 @@ for config_file in "$config_directory"/*.yaml; do
         echo "Finished processing: $config_name"
     fi
 done
+
+
+./create_all_mods.sh
