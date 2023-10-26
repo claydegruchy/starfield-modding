@@ -294,7 +294,7 @@ Group DisembarkingProperties collapsedonbase
 EndGroup
 
 Group BoardingProperties collapsedonbase
-  Float Property BoardingChance = {{BoardingProperties.BoardingChance}} Auto Const
+  Float Property BoardingChance = {{BoardingProperties.BoardingChance}} Auto
   { DEFAULT=0. Chance that this BE will have the enemy attempt to board; 0=Never, 1=Always, 0.5=Half the time. }
   Bool Property ShouldBoardPlayersShip = True Auto Const
   { DEFAULT=False. If true, the enemy ship's crew will attempt to board the player's ship. }
@@ -439,6 +439,9 @@ Group AutofillProperties collapsedonbase
   ActorValue Property ShipSystemReactorHealth Auto Const mandatory
   ActorValue Property Health Auto Const mandatory
   ActorValue Property ShipSystemEngineHealth Auto Const mandatory
+  ActorValue[] Property SystemHealthAVs Auto Const mandatory
+
+  
   ; end
 
   ActorValue Property BEBoarderCapturedModule Auto Const mandatory
@@ -593,13 +596,30 @@ Event OnQuestStarted()
 
     ; ===== MOD STARTS HERE ===== 
 
-      Debug.Notification("ShipSystemReactorHealth:" + enemyShipRef.GetValue(ShipSystemReactorHealth))
-    
-      Debug.Notification("Health:" + enemyShipRef.GetValue(Health))
-    
-      Debug.Notification("ShipSystemEngineHealth:" + enemyShipRef.GetValue(ShipSystemEngineHealth))
-    
 
+
+      ; Debug.Notification("SpaceshipCrew:" + enemyShipRef.GetValue(SpaceshipCrew))
+
+      ; Debug.Notification("SpaceshipCriticalHitCrew:" + enemyShipRef.GetValuePercentage(SpaceshipCriticalHitCrew))
+
+      ; Debug.Notification("ShipSystemReactorHealth:" + enemyShipRef.GetValuePercentage(ShipSystemReactorHealth))
+    
+      ; Debug.Notification("Health:" + enemyShipRef.GetValuePercentage(Health))
+    
+      ; Debug.Notification("GetItemHealthPercent:" + enemyShipRef.GetItemHealthPercent())
+
+      ; Int N = 0
+      ; ActorValue[] hpv = enemyShipRef.GetValue(SystemHealthAVs) as
+      ; While N < hpv.Length
+      ;   Debug.Notification("SystemHealthAVs:" + hpv[N].GetName())
+      ;   N += 1
+      ; EndWhile
+
+
+      
+
+    
+    
 
 
     ; this is a hackjob way to make sure we only do this on hostile ships, which i think is implicit but better safe than soryy 
@@ -635,7 +655,7 @@ Event OnQuestStarted()
 
     If allowCustomHazard && ShipHazard == None && PotentialHazards != None && PotentialHazards.Length > 0 && Utility.RandomFloat(0.0, 1.0) < PotentialHazardChance
       Int R = Utility.RandomInt(0, PotentialHazards.Length - 1)
-      Debug.Notification("ALERT. HAZARD: " + PotentialHazards[R])
+      Debug.Notification("Alert: Hazard Detected.")
       ShipHazard = PotentialHazards[R]
       ShouldHaveOxygenAtmosphere = False
     EndIf
@@ -643,20 +663,39 @@ Event OnQuestStarted()
 
     If ShipHazard != None
       Self.SetShipHazard(ShipHazard)
+      BoardingChance += 0.25
     EndIf
+
     If !ShouldHaveOxygenAtmosphere
       enemyShipInteriorLoc.AddKeyword(ENV_Loc_NotSealedEnvironment)
     EndIf
+
     If ShipGravity >= 0.0
-      If ShipGravityModPercentChance < 0.0 || ShipGravityModPercentChance >= 1.0 || Utility.RandomFloat(0.0, 1.0) < ShipGravityModPercentChance
-        Self.SetShipGravity(ShipGravity)
+      ; Debug.Notification("ShipGravity >= 0..."+ ShipGravityModPercentChance)
+      
+      If ShipGravityModPercentChance < 0.0 || ShipGravityModPercentChance > 1.0 
+      ; Debug.Notification("ShipGravityModPercentChance < 0.0 || ShipGravityModPercentChance > 1.0 ")
+      Self.SetShipGravity(ShipGravity)
+
+      ; if you are reading this and you think the below looks stupid then youre right but i cant find where is etting the value to 0.2
+      ElseIf Utility.RandomFloat(0.0, 1.0) < ShipGravityModPercentChance || ShipGravityModPercentChance == 0.2 ||  ShipGravityModPercentChance == 1.0
+      ; Debug.Notification("Utility.RandomFloat(0.0, 1.0) < ShipGravityModPercentChance")
+      ; Debug.Notification("1ShipGravity:"+ShipGravity)
+      Debug.Notification("Alert: Ship Gravity Disabled.")
+      Self.SetShipGravity(0.0)
+        ; Debug.Notification("2ShipGravity:"+ShipGravity)
+  
+
       ElseIf BE_ForceNextGravityOverride != None && BE_ForceNextGravityOverride.GetValue() >= 0.0
-        Self.SetShipGravity(BE_ForceNextGravityOverride.GetValue())
+      ; Debug.Notification("BE_ForceNextGravityOverride != None && BE_ForceNextGravityOverride.GetValue() >= 0.0")
+      Self.SetShipGravity(BE_ForceNextGravityOverride.GetValue())
         BE_ForceNextGravityOverride.SetValue(-1.0)
       Else
-        Self.SetShipGravity(1.0)
+      ; Debug.Notification("gutterball")
+      Self.SetShipGravity(1.0)
       EndIf
     EndIf
+    
     If Self.CheckForCrewCriticalHit()
       Self.DecompressShipAndKillCrew()
     EndIf

@@ -41,7 +41,7 @@ in git bash
 - cd `C:\Program Files (x86)\Steam\steamapps\common\Starfield\Data\Scripts\Source\User`
 - ` ./create_permutations.sh  -d Hazardous_ship_boarding.mod/config/ -t Hazardous_ship_boarding.mod/bescript.psc -b Hazardous_ship_boarding.mod/defaults.yaml -o Hazardous_ship_boarding.mod/permutations/`
 - `./create_all_mods.sh`
--
+- `nodemon -w Hazardous_ship_boarding.mod/bescript.psc  --exec "bash ./create_permutations.sh  -d Hazardous_ship_boarding.mod/config/ -t Hazardous_ship_boarding.mod/bescript.psc -b Hazardous_ship_boarding.mod/defaults.yaml -o Hazardous_ship_boarding.mod/permutations/"`
 -
 
 # todos

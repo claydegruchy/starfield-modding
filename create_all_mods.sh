@@ -43,6 +43,6 @@ for folder in *mod*; do
 done
 
 echo "copying"
-cp "Hazardous_ship_boarding.mod\permutations\standard\Data\scripts\bescript.pex" "..\..\bescript.pex"
+cp "Hazardous_ship_boarding.mod\permutations\high_chance_hazard\Data\scripts\bescript.pex" "..\..\bescript.pex"
 
 echo "done"

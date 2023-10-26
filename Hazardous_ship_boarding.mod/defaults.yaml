@@ -1,12 +1,12 @@
 ShipProperties:
-  PotentialHazardChance: 1.0
+  PotentialHazardChance: 0.25
   ShipGravityModPercentChance: 0.5
-  ShipGravity: -1.0
+  ShipGravity: 1.0
 GenericCrewDatum:
   ActorLevelModChanceEasy: 0.5
   ActorLevelModChanceMedium: 0.5
 BoardingProperties:
-  BoardingChance: 0.0
+  BoardingChance: 0.25
   MaxSimultaneousBoardersPercent: 1.0
   MinBoardingWaveSize: 4
   MaxBoardingWaveSize: 8
