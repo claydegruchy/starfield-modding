@@ -826,6 +826,7 @@ Function BuildModuleData()
   Float startTime = Utility.GetCurrentRealTime()
   Int I = 0
   While I < modulesWithCrew.Length
+    Debug.Notification("modulesWithCrew: " + modulesWithCrew[I])
     If modulesWithCrew[I].HasKeyword(BENoCrewKeyword) || !modulesWithCrew[I].HasLocRefType(Ship_Module_Small_RefType) && modulesWithCrew[I] != enemyShipCockpit
       modulesWithCrew.remove(I, 1)
       I -= 1
