@@ -675,24 +675,24 @@ Event OnQuestStarted()
       
       If ShipGravityModPercentChance < 0.0 || ShipGravityModPercentChance > 1.0 
       ; Debug.Notification("ShipGravityModPercentChance < 0.0 || ShipGravityModPercentChance > 1.0 ")
-      Self.SetShipGravity(ShipGravity)
+        Self.SetShipGravity(ShipGravity)
 
       ; if you are reading this and you think the below looks stupid then youre right but i cant find where is etting the value to 0.2
       ElseIf Utility.RandomFloat(0.0, 1.0) < ShipGravityModPercentChance || ShipGravityModPercentChance == 0.2 ||  ShipGravityModPercentChance == 1.0
       ; Debug.Notification("Utility.RandomFloat(0.0, 1.0) < ShipGravityModPercentChance")
       ; Debug.Notification("1ShipGravity:"+ShipGravity)
-      Debug.Notification("Alert: Ship Gravity Disabled.")
-      Self.SetShipGravity(0.0)
+        Debug.Notification("Alert: Ship Gravity Disabled.")
+        Self.SetShipGravity(0.0)
         ; Debug.Notification("2ShipGravity:"+ShipGravity)
   
 
       ElseIf BE_ForceNextGravityOverride != None && BE_ForceNextGravityOverride.GetValue() >= 0.0
       ; Debug.Notification("BE_ForceNextGravityOverride != None && BE_ForceNextGravityOverride.GetValue() >= 0.0")
-      Self.SetShipGravity(BE_ForceNextGravityOverride.GetValue())
+        Self.SetShipGravity(BE_ForceNextGravityOverride.GetValue())
         BE_ForceNextGravityOverride.SetValue(-1.0)
       Else
       ; Debug.Notification("gutterball")
-      Self.SetShipGravity(1.0)
+        Self.SetShipGravity(1.0)
       EndIf
     EndIf
     
